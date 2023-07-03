@@ -20,7 +20,9 @@ services:
       WORDPRESS_DB_USER: ${DB_USER-bandaloco}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD-password}
       WORDPRESS_DB_NAME: ${DB_NAME-bandaloco}
-      WORDPRESS_DEBUG: 1
+      WORDPRESS_DEBUG: 0
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_MEMORY_LIMIT', '512M');
     networks:
       - eth
     depends_on:
