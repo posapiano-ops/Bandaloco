@@ -5,6 +5,7 @@ services:
     image: wordpress:latest
     container_name: wp
     hostname: wp
+    user: 1000:1000
     ports:
       - ${WP_PORT-3000}:80
     volumes:
