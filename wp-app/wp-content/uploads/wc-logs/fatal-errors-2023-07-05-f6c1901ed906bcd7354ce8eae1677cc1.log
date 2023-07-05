@@ -1,0 +1,98 @@
+2023-07-05T11:18:26+00:00 CRITICAL Uncaught WpOrg\Requests\Exception\InvalidArgument: WpOrg\Requests\Cookie::__construct(): Argument #1 ($name) must be of type string, integer given in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php:29
+Stack trace:
+#0 /var/www/html/wp-includes/Requests/src/Cookie.php(83): WpOrg\Requests\Exception\InvalidArgument::create(1, '$name', 'string', 'integer')
+#1 /var/www/html/wp-includes/class-wp-http.php(472): WpOrg\Requests\Cookie->__construct(0, 'wordpress_87a70...')
+#2 /var/www/html/wp-includes/class-wp-http.php(352): WP_Http::normalize_cookies(Array)
+#3 /var/www/html/wp-includes/http.php(145): WP_Http->request('http://look.red...', Array)
+#4 /var/www/html/wp-content/plugins/btg-core/imi-admin/theme-options/ReduxCore/inc/class.p.php(229): wp_remote_request('http://look.red...', Array)
+#5 /var/www/html/wp-includes/class-wp-hook.php(308): Redux_P->proxy('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-admin/admin-ajax.php(188): do_action('wp_ajax_redux_p')
+#9 {main}
+  thrown in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php alla riga 29
+
+2023-07-05T11:18:34+00:00 CRITICAL Uncaught WpOrg\Requests\Exception\InvalidArgument: WpOrg\Requests\Cookie::__construct(): Argument #1 ($name) must be of type string, integer given in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php:29
+Stack trace:
+#0 /var/www/html/wp-includes/Requests/src/Cookie.php(83): WpOrg\Requests\Exception\InvalidArgument::create(1, '$name', 'string', 'integer')
+#1 /var/www/html/wp-includes/class-wp-http.php(472): WpOrg\Requests\Cookie->__construct(0, 'wordpress_87a70...')
+#2 /var/www/html/wp-includes/class-wp-http.php(352): WP_Http::normalize_cookies(Array)
+#3 /var/www/html/wp-includes/http.php(145): WP_Http->request('http://look.red...', Array)
+#4 /var/www/html/wp-content/plugins/btg-core/imi-admin/theme-options/ReduxCore/inc/class.p.php(229): wp_remote_request('http://look.red...', Array)
+#5 /var/www/html/wp-includes/class-wp-hook.php(308): Redux_P->proxy('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-admin/admin-ajax.php(188): do_action('wp_ajax_redux_p')
+#9 {main}
+  thrown in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php alla riga 29
+
+2023-07-05T11:19:11+00:00 CRITICAL Uncaught WpOrg\Requests\Exception\InvalidArgument: WpOrg\Requests\Cookie::__construct(): Argument #1 ($name) must be of type string, integer given in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php:29
+Stack trace:
+#0 /var/www/html/wp-includes/Requests/src/Cookie.php(83): WpOrg\Requests\Exception\InvalidArgument::create(1, '$name', 'string', 'integer')
+#1 /var/www/html/wp-includes/class-wp-http.php(472): WpOrg\Requests\Cookie->__construct(0, 'wordpress_87a70...')
+#2 /var/www/html/wp-includes/class-wp-http.php(352): WP_Http::normalize_cookies(Array)
+#3 /var/www/html/wp-includes/http.php(145): WP_Http->request('http://look.red...', Array)
+#4 /var/www/html/wp-content/plugins/btg-core/imi-admin/theme-options/ReduxCore/inc/class.p.php(229): wp_remote_request('http://look.red...', Array)
+#5 /var/www/html/wp-includes/class-wp-hook.php(308): Redux_P->proxy('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-admin/admin-ajax.php(188): do_action('wp_ajax_redux_p')
+#9 {main}
+  thrown in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php alla riga 29
+
+2023-07-05T11:24:34+00:00 CRITICAL Uncaught WpOrg\Requests\Exception\InvalidArgument: WpOrg\Requests\Cookie::__construct(): Argument #1 ($name) must be of type string, integer given in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php:29
+Stack trace:
+#0 /var/www/html/wp-includes/Requests/src/Cookie.php(83): WpOrg\Requests\Exception\InvalidArgument::create(1, '$name', 'string', 'integer')
+#1 /var/www/html/wp-includes/class-wp-http.php(472): WpOrg\Requests\Cookie->__construct(0, 'wordpress_87a70...')
+#2 /var/www/html/wp-includes/class-wp-http.php(352): WP_Http::normalize_cookies(Array)
+#3 /var/www/html/wp-includes/http.php(145): WP_Http->request('http://look.red...', Array)
+#4 /var/www/html/wp-content/plugins/btg-core/imi-admin/theme-options/ReduxCore/inc/class.p.php(229): wp_remote_request('http://look.red...', Array)
+#5 /var/www/html/wp-includes/class-wp-hook.php(308): Redux_P->proxy('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-admin/admin-ajax.php(188): do_action('wp_ajax_redux_p')
+#9 {main}
+  thrown in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php alla riga 29
+
+2023-07-05T11:39:09+00:00 CRITICAL Uncaught WpOrg\Requests\Exception\InvalidArgument: WpOrg\Requests\Cookie::__construct(): Argument #1 ($name) must be of type string, integer given in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php:29
+Stack trace:
+#0 /var/www/html/wp-includes/Requests/src/Cookie.php(83): WpOrg\Requests\Exception\InvalidArgument::create(1, '$name', 'string', 'integer')
+#1 /var/www/html/wp-includes/class-wp-http.php(472): WpOrg\Requests\Cookie->__construct(0, 'wordpress_87a70...')
+#2 /var/www/html/wp-includes/class-wp-http.php(352): WP_Http::normalize_cookies(Array)
+#3 /var/www/html/wp-includes/http.php(145): WP_Http->request('http://look.red...', Array)
+#4 /var/www/html/wp-content/plugins/btg-core/imi-admin/theme-options/ReduxCore/inc/class.p.php(229): wp_remote_request('http://look.red...', Array)
+#5 /var/www/html/wp-includes/class-wp-hook.php(308): Redux_P->proxy('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-admin/admin-ajax.php(188): do_action('wp_ajax_redux_p')
+#9 {main}
+  thrown in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php alla riga 29
+
+2023-07-05T11:49:06+00:00 CRITICAL Uncaught WpOrg\Requests\Exception\InvalidArgument: WpOrg\Requests\Cookie::__construct(): Argument #1 ($name) must be of type string, integer given in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php:29
+Stack trace:
+#0 /var/www/html/wp-includes/Requests/src/Cookie.php(83): WpOrg\Requests\Exception\InvalidArgument::create(1, '$name', 'string', 'integer')
+#1 /var/www/html/wp-includes/class-wp-http.php(472): WpOrg\Requests\Cookie->__construct(0, 'wordpress_87a70...')
+#2 /var/www/html/wp-includes/class-wp-http.php(352): WP_Http::normalize_cookies(Array)
+#3 /var/www/html/wp-includes/http.php(145): WP_Http->request('http://look.red...', Array)
+#4 /var/www/html/wp-content/plugins/btg-core/imi-admin/theme-options/ReduxCore/inc/class.p.php(229): wp_remote_request('http://look.red...', Array)
+#5 /var/www/html/wp-includes/class-wp-hook.php(308): Redux_P->proxy('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-admin/admin-ajax.php(188): do_action('wp_ajax_redux_p')
+#9 {main}
+  thrown in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php alla riga 29
+
+2023-07-05T11:52:49+00:00 CRITICAL Uncaught WpOrg\Requests\Exception\InvalidArgument: WpOrg\Requests\Cookie::__construct(): Argument #1 ($name) must be of type string, integer given in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php:29
+Stack trace:
+#0 /var/www/html/wp-includes/Requests/src/Cookie.php(83): WpOrg\Requests\Exception\InvalidArgument::create(1, '$name', 'string', 'integer')
+#1 /var/www/html/wp-includes/class-wp-http.php(472): WpOrg\Requests\Cookie->__construct(0, 'wordpress_87a70...')
+#2 /var/www/html/wp-includes/class-wp-http.php(352): WP_Http::normalize_cookies(Array)
+#3 /var/www/html/wp-includes/http.php(145): WP_Http->request('http://look.red...', Array)
+#4 /var/www/html/wp-content/plugins/btg-core/imi-admin/theme-options/ReduxCore/inc/class.p.php(229): wp_remote_request('http://look.red...', Array)
+#5 /var/www/html/wp-includes/class-wp-hook.php(308): Redux_P->proxy('')
+#6 /var/www/html/wp-includes/class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#7 /var/www/html/wp-includes/plugin.php(517): WP_Hook->do_action(Array)
+#8 /var/www/html/wp-admin/admin-ajax.php(188): do_action('wp_ajax_redux_p')
+#9 {main}
+  thrown in /var/www/html/wp-includes/Requests/src/Exception/InvalidArgument.php alla riga 29
+

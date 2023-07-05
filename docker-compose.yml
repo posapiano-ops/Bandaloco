@@ -5,14 +5,11 @@ services:
     image: wordpress:latest
     container_name: wp
     hostname: wp
-    user: 1000:1000
     ports:
       - ${WP_PORT-3000}:80
     volumes:
-      - wp_data:/var/www/html
+      - ./wp-app:/var/www/html
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ./wp-plugins:/var/www/html/wp-content/plugins
-      - ./wp-uploads:/var/www/html/wp-content/uploads
       # - ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
       - ./theme/born-to-give:/var/www/html/wp-content/themes/born-to-give # Theme development
     restart: unless-stopped	
@@ -21,7 +18,7 @@ services:
       WORDPRESS_DB_USER: ${DB_USER-bandaloco}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD-password}
       WORDPRESS_DB_NAME: ${DB_NAME-bandaloco}
-      WORDPRESS_DEBUG: 0
+      WORDPRESS_DEBUG: 1
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_MEMORY_LIMIT', '512M');
     networks:
@@ -35,7 +32,7 @@ services:
     hostname: wpcli                                                                                                                    
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - wp_data:/var/www/html
+      - ./wp-app:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: ${DB_USER-bandaloco}
@@ -65,7 +62,6 @@ services:
 
 volumes:
   db_data: 
-  wp_data:
 
 networks:
   eth:
