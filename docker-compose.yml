@@ -51,7 +51,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./wp-data:/docker-entrypoint-initdb.d
-      - db_data-demo:/var/lib/mysql
+      - db_data:/var/lib/mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD-password}
@@ -61,8 +61,35 @@ services:
     networks:
       - eth
 
+  # Gui Mysql
+  dbeaver:
+    image: dbeaver/cloudbeaver
+    hostname: dbeaver
+    container_name: dbeaver
+    restart: unless-stopped
+    entrypoint: /opt/cloudbeaver/docker-entrypoint.sh
+    depends_on:
+      - db
+    ports:
+      - 3080:8978
+    volumes:
+      - dbeaver_data:/opt/cloudbeaver/workspace
+      - ./dbeaver/config/docker-entrypoint.sh:/opt/cloudbeaver/docker-entrypoint.sh
+      - ./dbeaver/config/initial-data-sources.json:/opt/cloudbeaver/conf/initial-data-sources.conf
+      - ./dbeaver/config/project-metadata.json:/opt/cloudbeaver/conf/project-metadata.conf
+      - ./dbeaver/config/product.conf:/opt/cloudbeaver/conf/product.conf
+      - ./dbeaver/config/cloudbeaver.conf:/opt/cloudbeaver/conf/cloudbeaver.conf
+      - ./dbeaver/script:/opt/cloudbeaver/workspace/script
+    environment:
+      CB_ADMIN_NAME: ${DBEAVER_USER-admin@dbeaver}
+      CB_ADMIN_PASSWORD: ${DBEAVAR_PASSWORD-password}
+      CB_SERVER_NAME: dbeaver
+    networks:
+      eth:
+
 volumes:
-  db_data-demo: 
+  db_data:
+  dbeaver_data: 
 
 networks:
   eth:
