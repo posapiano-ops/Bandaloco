@@ -18,7 +18,7 @@ services:
       WORDPRESS_DB_USER: ${DB_USER-bandaloco}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD-password}
       WORDPRESS_DB_NAME: ${DB_NAME-bandaloco}
-      WORDPRESS_DEBUG: 1
+      WORDPRESS_DEBUG: 0
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_MEMORY_LIMIT', '512M');
     networks:
@@ -45,12 +45,13 @@ services:
       - wp
 
   db:
-    image: mariadb:latest
+    image: mysql:latest
     container_name: db
     hostname: db
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./wp-data:/docker-entrypoint-initdb.d
-      - db_data:/var/lib/mysql
+      - db_data-demo:/var/lib/mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD-password}
@@ -61,7 +62,7 @@ services:
       - eth
 
 volumes:
-  db_data: 
+  db_data-demo: 
 
 networks:
   eth:
