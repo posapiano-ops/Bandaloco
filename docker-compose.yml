@@ -15,14 +15,14 @@ services:
     restart: unless-stopped	
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: ${DB_USER-bandaloco}
-      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD-password}
-      WORDPRESS_DB_NAME: ${DB_NAME-bandaloco}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${DB_NAME}
       WORDPRESS_DEBUG: 0
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_MEMORY_LIMIT', '512M');
     networks:
-      - eth
+      bl-eth: null
     depends_on:
       - db
 
@@ -35,11 +35,11 @@ services:
       - ./wp-app:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: ${DB_USER-bandaloco}
-      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD-password}
-      WORDPRESS_DB_NAME: ${DB_NAME-bandaloco}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${DB_NAME}
     networks:
-      - eth
+      bl-eth: null
     depends_on:
       - db
       - wp
@@ -54,12 +54,12 @@ services:
       - db_data:/var/lib/mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD-password}
-      MYSQL_DATABASE: ${DB_NAME-bandaloco}
-      MYSQL_USER: ${DB_USER-bandaloco}
-      MYSQL_PASSWORD: ${DB_PASSWORD-password}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
-      - eth
+      bl-eth: null
 
   # Gui Mysql
   dbeaver:
@@ -85,11 +85,13 @@ services:
       CB_ADMIN_PASSWORD: ${DBEAVAR_PASSWORD-password}
       CB_SERVER_NAME: dbeaver
     networks:
-      eth:
+      bl-eth: null
 
 volumes:
   db_data:
   dbeaver_data: 
 
 networks:
-  eth:
+  bl-eth:
+    external: true
+    name: bl-eth
