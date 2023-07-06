@@ -74,15 +74,15 @@ services:
       - 3080:8978
     volumes:
       - dbeaver_data:/opt/cloudbeaver/workspace
-      - ./dbeaver/config/docker-entrypoint.sh:/opt/cloudbeaver/docker-entrypoint.sh
-      - ./dbeaver/config/initial-data-sources.json:/opt/cloudbeaver/conf/initial-data-sources.conf
-      - ./dbeaver/config/project-metadata.json:/opt/cloudbeaver/conf/project-metadata.conf
-      - ./dbeaver/config/product.conf:/opt/cloudbeaver/conf/product.conf
-      - ./dbeaver/config/cloudbeaver.conf:/opt/cloudbeaver/conf/cloudbeaver.conf
-      - ./dbeaver/script:/opt/cloudbeaver/workspace/script
+      - ./tools/dbeaver/config/docker-entrypoint.sh:/opt/cloudbeaver/docker-entrypoint.sh
+      - ./tools/dbeaver/config/initial-data-sources.json:/opt/cloudbeaver/conf/initial-data-sources.conf
+      - ./tools/dbeaver/config/project-metadata.json:/opt/cloudbeaver/conf/project-metadata.conf
+      - ./tools/dbeaver/config/product.conf:/opt/cloudbeaver/conf/product.conf
+      - ./tools/dbeaver/config/cloudbeaver.conf:/opt/cloudbeaver/conf/cloudbeaver.conf
+#      - ./dbeaver/script:/opt/cloudbeaver/workspace/script
     environment:
-      CB_ADMIN_NAME: ${DBEAVER_USER-admin@dbeaver}
-      CB_ADMIN_PASSWORD: ${DBEAVAR_PASSWORD-password}
+      CB_ADMIN_NAME: ${DBEAVER_USER}
+      CB_ADMIN_PASSWORD: ${DBEAVAR_PASSWORD}
       CB_SERVER_NAME: dbeaver
     networks:
       bl-eth: null

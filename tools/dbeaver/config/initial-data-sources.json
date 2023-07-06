@@ -1,0 +1,33 @@
+{
+	"folders": {},
+	"connections": {
+			"mysql8-1892be9bfdb-30a339d46cda7bd4": {
+					"provider": "mysql",
+					"driver": "mysql8",
+					"name": "bandaloco@db.dev",
+					"save-password": true,
+					"configuration": {
+							"host": "db",
+							"port": "3306",
+							"database": "bandaloco",
+							"user": "bandaloco",
+							"password": "password",
+							"url": "jdbc:mysql://db:3306/bandaloco",
+							"configurationType": "MANUAL",
+							"type": "dev",
+							"auth-model": "native"
+					}
+			}
+	},
+	"connection-types": {
+			"dev": {
+					"name": "Development",
+					"color": "255,255,255",
+					"description": "Regular development database",
+					"auto-commit": true,
+					"confirm-execute": false,
+					"confirm-data-change": false,
+					"auto-close-transactions": false
+			}
+	}
+}
