@@ -1,1 +1,8 @@
 151276_borntogive291*
+borntogive291*
+WPTry.org.url
+wp-app/*
+wp-data/*
+!wp-app/readme.md
+!wp-data/readme.md
+.env

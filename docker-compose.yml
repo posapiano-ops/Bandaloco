@@ -8,21 +8,39 @@ services:
     ports:
       - ${WP_PORT-3000}:80
     volumes:
-      - wp_data:/var/www/html
+      - ./wp-app:/var/www/html
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ./wp-plugins:/var/www/html/wp-content/plugins
-      - ./wp-uploads:/var/www/html/wp-content/uploads
       # - ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
       - ./theme/born-to-give:/var/www/html/wp-content/themes/born-to-give # Theme development
     restart: unless-stopped	
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: ${DB_USER-bandaloco}
-      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD-password}
-      WORDPRESS_DB_NAME: ${DB_NAME-bandaloco}
-      WORDPRESS_DEBUG: 1
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DEBUG: 0
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_MEMORY_LIMIT', '512M');
+        
+        define( 'WPMS_ON', true );
+        // general configuration settings
+        define( 'WPMS_MAIL_FROM', 'email@bandaloco.dev' );
+        define( 'WPMS_MAIL_FROM_FORCE', true ); // True turns it on, false turns it off.
+        define( 'WPMS_MAIL_FROM_NAME', 'bandaloco.dev' );
+        define( 'WPMS_MAIL_FROM_NAME_FORCE', true ); // True turns it on, false turns it off.
+        define( 'WPMS_SET_RETURN_PATH', false ); // Sets phpmailer->Sender if true.
+
+        // specific configuration settings WPMS_SMTP
+        define( 'WPMS_SMTP_HOST', 'maildev' ); 
+        define( 'WPMS_SMTP_PORT', 1025 ); 
+        // define( 'WPMS_SSL', 'tls' ); 
+        define( 'WPMS_SMTP_AUTH', false ); 
+        // define( 'WPMS_SMTP_USER', 'email@bandaloco.dev' );
+        // define( 'WPMS_SMTP_PASS', '********' );
+        define( 'WPMS_SMTP_AUTOTLS', false );
+        define( 'WPMS_MAILER', 'smtp' );
     networks:
-      - eth
+      bl-eth: null
     depends_on:
       - db
 
@@ -32,37 +50,80 @@ services:
     hostname: wpcli                                                                                                                    
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - wp_data:/var/www/html
+      - ./wp-app:/var/www/html:rw
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: ${DB_USER-bandaloco}
-      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD-password}
-      WORDPRESS_DB_NAME: ${DB_NAME-bandaloco}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${DB_NAME}
     networks:
-      - eth
+      bl-eth: null
     depends_on:
       - db
       - wp
 
   db:
-    image: mariadb:latest
+    image: mysql:latest
     container_name: db
     hostname: db
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - ./wp-data:/docker-entrypoint-initdb.d
+      - ./wp-data:/docker-entrypoint-initdb.d:rw
       - db_data:/var/lib/mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD-password}
-      MYSQL_DATABASE: ${DB_NAME-bandaloco}
-      MYSQL_USER: ${DB_USER-bandaloco}
-      MYSQL_PASSWORD: ${DB_PASSWORD-password}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
-      - eth
+      bl-eth: null
+
+  # Gui Mysql
+  dbeaver:
+    image: dbeaver/cloudbeaver
+    hostname: dbeaver
+    container_name: dbeaver
+    restart: unless-stopped
+    entrypoint: /opt/cloudbeaver/docker-entrypoint.sh
+    depends_on:
+      - db
+    ports:
+      - 3080:8978
+    volumes:
+      - dbeaver_data:/opt/cloudbeaver/workspace
+      - ./tools/dbeaver/config/docker-entrypoint.sh:/opt/cloudbeaver/docker-entrypoint.sh
+      - ./tools/dbeaver/config/initial-data-sources.json:/opt/cloudbeaver/conf/initial-data-sources.conf
+      - ./tools/dbeaver/config/project-metadata.json:/opt/cloudbeaver/conf/project-metadata.conf
+      - ./tools/dbeaver/config/product.conf:/opt/cloudbeaver/conf/product.conf
+      - ./tools/dbeaver/config/cloudbeaver.conf:/opt/cloudbeaver/conf/cloudbeaver.conf
+#      - ./dbeaver/script:/opt/cloudbeaver/workspace/script
+    environment:
+      CB_ADMIN_NAME: ${DBEAVER_USER}
+      CB_ADMIN_PASSWORD: ${DBEAVAR_PASSWORD}
+      CB_SERVER_NAME: dbeaver
+    networks:
+      bl-eth: null
+
+  maildev:
+    image: maildev/maildev
+    hostname: maildev
+    container_name: maildev
+    restart: unless-stopped
+    ports:
+      - 3081:1080
+    environment:
+      - TZ=Europe/rome
+      - MAILDEV_WEB_PORT=1080
+      - MAILDEV_SMTP_PORT=1025
+    networks:
+      bl-eth: null
 
 volumes:
-  db_data: 
-  wp_data:
+  db_data:
+  dbeaver_data: 
 
 networks:
-  eth:
+  bl-eth:
+    external: true
+    name: bl-eth
