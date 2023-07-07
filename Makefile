@@ -12,7 +12,7 @@ help: ## Show this help.
 variables: ## Print variables
 	@echo ${ROOT_DIR} ${DOCKER_COMPOSE} ${COMPOSE_YML} ${NETWORK_NAME}
 
-setup: .env create-network ## Create eth network if it does not exits
+setup: .env create-network start ## Create eth network if it does not exits
 
 up: $(COMPOSE_YML) ## Start core containers in foreground (or only one c=<container-name>)
 	@$(DOCKER_COMPOSE) -f $(COMPOSE_YML) up $(c)
