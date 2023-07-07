@@ -21,3 +21,21 @@ docker-compose run --rm wpcli theme uninstall twentytwentytwo
 #docker-compose run --rm wpcli theme uninstall twentytwentythree
 
 ```
+
+
+# Installa theme
+copy zip in document root
+```bash
+cd theme ; zip -r ../wp-app/born-to-give.zip . * ; cd ..
+```
+install 
+```bash
+docker-compose run --rm wpcli theme install born-to-give.zip
+
+docker-compose run --rm wpcli plugin install /var/www/html/wp-content/themes/born-to-give/framework/tgm/plugins/btg-core.zip --activate
+
+#docker-compose run --rm wpcli plugin activate btg-core
+
+docker-compose run --rm wpcli theme activate born-to-give
+
+``` 
