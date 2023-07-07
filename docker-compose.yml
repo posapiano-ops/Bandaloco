@@ -87,6 +87,20 @@ services:
     networks:
       bl-eth: null
 
+  maildev:
+    image: maildev/maildev
+    hostname: maildev
+    container_name: maildev
+    restart: unless-stopped
+    ports:
+      - 3081:1080
+    environment:
+      - TZ=Europe/rome
+      - MAILDEV_WEB_PORT=1080
+      - MAILDEV_SMTP_PORT=1025
+    networks:
+      bl-eth: null
+
 volumes:
   db_data:
   dbeaver_data: 
