@@ -21,13 +21,14 @@ services:
       WORDPRESS_DEBUG: 0
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_MEMORY_LIMIT', '512M');
+        define('FS_METHOD', 'direct');
         
         define( 'WPMS_ON', true );
         // general configuration settings
         define( 'WPMS_MAIL_FROM', 'email@bandaloco.dev' );
-        define( 'WPMS_MAIL_FROM_FORCE', true ); // True turns it on, false turns it off.
+        define( 'WPMS_MAIL_FROM_FORCE', true ); 
         define( 'WPMS_MAIL_FROM_NAME', 'bandaloco.dev' );
-        define( 'WPMS_MAIL_FROM_NAME_FORCE', true ); // True turns it on, false turns it off.
+        define( 'WPMS_MAIL_FROM_NAME_FORCE', true ); 
         define( 'WPMS_SET_RETURN_PATH', false ); // Sets phpmailer->Sender if true.
 
         // specific configuration settings WPMS_SMTP

@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: confirm .env create-network show-containers
+.PHONY: confirm .env create-network wordpress backup show-containers
 
 confirm:
 	@( read -p "$(RED)Are you sure? [y/N]$(RESET): " sure && case "$$sure" in [yY]) true;; *) false;; esac )
