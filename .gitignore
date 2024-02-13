@@ -6,3 +6,7 @@ wp-data/*
 !wp-app/readme.md
 !wp-data/readme.md
 .env
+theme/*
+!theme/readme.md
+!plugins/readme.md
+plugins/*

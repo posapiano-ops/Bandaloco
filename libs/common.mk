@@ -32,6 +32,11 @@ wordpress:
 	@echo 'Init theme'
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentyone
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentytwo
+	@echo 'Init Avada'
+	@$(DOCKER_COMPOSE) run --rm wpcli theme activate Avada
+	@$(DOCKER_COMPOSE) run --rm wpcli plugin activate fusion-core
+	@$(DOCKER_COMPOSE) run --rm wpcli plugin activate fusion-builder
+	@$(DOCKER_COMPOSE) run --rm wpcli plugin activate fusion-white-label-branding
 
 backup:
 	@echo 'Backup Database'
