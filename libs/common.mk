@@ -29,14 +29,9 @@ wordpress:
 	@echo 'Init plugin'
 	@$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-mail-smtp --activate
 	@$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello
-	@echo 'Init theme'
-	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentyone
+	@echo 'delete theme'
+	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentythree	
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentytwo
-	@echo 'Init Avada'
-	@$(DOCKER_COMPOSE) run --rm wpcli theme activate Avada
-	@$(DOCKER_COMPOSE) run --rm wpcli plugin activate fusion-core
-	@$(DOCKER_COMPOSE) run --rm wpcli plugin activate fusion-builder
-	@$(DOCKER_COMPOSE) run --rm wpcli plugin activate fusion-white-label-branding
 
 backup:
 	@echo 'Backup Database'
