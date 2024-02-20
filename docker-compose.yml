@@ -12,7 +12,7 @@ services:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ./plugins/fusion-builder:/var/www/html/wp-content/plugins/fusion-builder # Plugin development
       - ./plugins/fusion-core:/var/www/html/wp-content/plugins/fusion-core
-      - ./plugins/fusion-white-label-branding:/var/www/html/wp-content/plugins/fusion-white-label-branding
+      #- ./plugins/fusion-white-label-branding:/var/www/html/wp-content/plugins/fusion-white-label-branding
       - ./theme/Avada:/var/www/html/wp-content/themes/Avada # Theme development
     restart: unless-stopped	
     environment:
