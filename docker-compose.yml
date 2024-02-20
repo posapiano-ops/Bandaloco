@@ -69,7 +69,7 @@ services:
     image: mariadb:11.2
     container_name: db
     hostname: db
-    command: --default-authentication-plugin=mysql_native_password
+    #command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./wp-data:/docker-entrypoint-initdb.d:rw
       - db_data:/var/lib/mysql
