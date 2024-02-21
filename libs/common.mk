@@ -50,6 +50,6 @@ show-containers:
 	@echo 'Those are the available containers in this project:'
 	@echo '--> wp (Wordpress Server 6.x)'
 	@echo '--> wpcli (Wordpress CLI 2.x)'
-	@echo '--> db (DataBase Server MySQL 8.x)'
+	@echo '--> db (DataBase Server MariaDB 11.x)'
 	@echo '--> dbeaver (Cloud Database Manager)'
 	@echo '--> maildev (MAILdev fake SMTP)'
