@@ -4,8 +4,8 @@ NETWORK_NAME=bl-eth
 
 WP_URL=http://localhost:3000
 WP_SITE_NAME=BandaLoco.dev
-WP_SITE_USER=admin
-WP_SITE_PASSWORD=password
+WP_SITE_USER = ${WP_ADMIN}
+WP_SITE_PASSWORD = ${WP_PASSWORD}
 WP_SITE_MAIL=bandariello@dev.loco
 WP_SITE_LANG=it_IT
 WP_SITE_TIMEZONE="Europe/Rome"

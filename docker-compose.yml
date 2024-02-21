@@ -2,7 +2,7 @@ version: "3.9"
     
 services:
   wp:
-    image: wordpress:latest
+    image: wordpress:6.4.3-php8.3-apache
     container_name: wp
     hostname: wp
     ports:
@@ -10,24 +10,27 @@ services:
     volumes:
       - ./wp-app:/var/www/html
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      # - ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
-      - ./theme/born-to-give:/var/www/html/wp-content/themes/born-to-give # Theme development
+      - ./plugins/fusion-builder:/var/www/html/wp-content/plugins/fusion-builder # Plugin development
+      - ./plugins/fusion-core:/var/www/html/wp-content/plugins/fusion-core
+      - ./theme/Avada:/var/www/html/wp-content/themes/Avada # Theme development
     restart: unless-stopped	
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_DB_NAME: ${DB_NAME}
+      #WORDPRESS_TABLE_PREFIX: blo_
       WORDPRESS_DEBUG: 0
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_MEMORY_LIMIT', '512M');
+        define('FS_METHOD', 'direct');
         
         define( 'WPMS_ON', true );
         // general configuration settings
         define( 'WPMS_MAIL_FROM', 'email@bandaloco.dev' );
-        define( 'WPMS_MAIL_FROM_FORCE', true ); // True turns it on, false turns it off.
+        define( 'WPMS_MAIL_FROM_FORCE', true ); 
         define( 'WPMS_MAIL_FROM_NAME', 'bandaloco.dev' );
-        define( 'WPMS_MAIL_FROM_NAME_FORCE', true ); // True turns it on, false turns it off.
+        define( 'WPMS_MAIL_FROM_NAME_FORCE', true ); 
         define( 'WPMS_SET_RETURN_PATH', false ); // Sets phpmailer->Sender if true.
 
         // specific configuration settings WPMS_SMTP
@@ -45,9 +48,9 @@ services:
       - db
 
   wpcli:
-    image: wordpress:cli
+    image: wordpress:cli-php8.3
     container_name: wpcli
-    hostname: wpcli                                                                                                                    
+    hostname: wpcli                                                                                                                  
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ./wp-app:/var/www/html:rw
@@ -63,12 +66,12 @@ services:
       - wp
 
   db:
-    image: mysql:latest
+    image: mariadb:11.2
     container_name: db
     hostname: db
-    command: --default-authentication-plugin=mysql_native_password
+    #command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - ./wp-data:/docker-entrypoint-initdb.d:rw
+      #- ./wp-data:/docker-entrypoint-initdb.d:rw
       - db_data:/var/lib/mysql
     restart: unless-stopped
     environment:
