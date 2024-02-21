@@ -1,7 +1,8 @@
 #!/bin/bash
+
 _os="`uname`"
 _now=$(date +"%m_%d_%Y")
-_file="wp-data/data_$_now.sql"
+_file="wp-data/db/data_$_now.sql"
 
 # Export dump
 EXPORT_COMMAND='exec /usr/bin/mysqldump "$MYSQL_DATABASE" -uroot -p"$MYSQL_ROOT_PASSWORD"'

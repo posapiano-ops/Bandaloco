@@ -43,7 +43,8 @@ wordpress: fix-permissions
 
 backup:
 	@echo 'Backup Database'
-	@./tools/export.sh
+	@$(DOCKER_COMPOSE) run --rm wpcli db export
+	@mv ./wp-app/*.sql ./wp-data/db/
 
 show-containers:
 	@echo 'Those are the available containers in this project:'
