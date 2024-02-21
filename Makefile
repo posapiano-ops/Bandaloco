@@ -3,6 +3,7 @@ SHELL := /bin/bash
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 include $(ROOT_DIR)/libs/common.mk
 include $(ROOT_DIR)/libs/variables.mk
+include $(ROOT_DIR)/.env
 
 .PHONY: help up start stop ps clean setup destroy 
 
@@ -36,3 +37,5 @@ clean: confirm ## Stop and remove all containers, networks..
 
 destroy: confirm ## Remove all containers and their volumes (or only one c=<container-name>)
 	@${DOCKER_COMPOSE} down -v $(c) ;
+	@sudo rm -rf wp-app/* $(filter-out readme.md,$(wildcard *)); 
+	@sudo rm wp-app/.htaccess

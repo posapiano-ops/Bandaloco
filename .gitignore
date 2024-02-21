@@ -10,3 +10,4 @@ theme/*
 !theme/readme.md
 !plugins/readme.md
 plugins/*
+.installed

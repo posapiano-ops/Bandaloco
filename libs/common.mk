@@ -26,10 +26,15 @@ wordpress:
 	@$(DOCKER_COMPOSE) run --rm wpcli option update timezone_string $(WP_SITE_TIMEZONE)
 	@$(DOCKER_COMPOSE) run --rm wpcli option update date_format $(WP_SITE_DATE_FORMAT)
 	@$(DOCKER_COMPOSE) run --rm wpcli option update time_format $(WP_SITE_TIME_FORMAT)
-	@echo 'Init plugin'
-	@$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-mail-smtp --activate
-	@$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello
-	@echo 'delete theme'
+	@if [ ! -f .installed ]; then \
+		echo 'Init plugin'; \
+		$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-mail-smtp --activate; \
+		$(DOCKER_COMPOSE) run --rm wpcli plugin install sg-security --activate ; \
+		$(DOCKER_COMPOSE) run --rm wpcli plugin activate akismet ; \
+		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
+		touch .installed ; \
+	fi
+	@echo 'delete theme inactive'
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentythree	
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentytwo
 
