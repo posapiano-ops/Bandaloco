@@ -33,6 +33,7 @@ wordpress: fix-permissions
 		echo 'Init plugin'; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-mail-smtp --activate; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin install sg-security --activate ; \
+		$(DOCKER_COMPOSE) run --rm wpcli plugin install gutenberg --activate ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall akismet ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
 		touch .installed ; \
