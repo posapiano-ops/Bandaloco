@@ -13,8 +13,9 @@ make: *** [/home/pippo/workspaceU/BandaLoco/libs/common.mk:24: wordpress] Error 
 ```
 ***SOLUZIONE***: esegui 
 ```bash
-sudo chmod 777 -R wp-app/
+sudo chmod 775 -R wp-app/
 ```
+
 2. fix database connection
 ```bash
 Error: Error establishing a database connection. This either means that the username and password information in your `wp-config.php` file is incorrect or that contact with the database server at `db` could not be established. This could mean your host’s database server is down.

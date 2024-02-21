@@ -7,7 +7,6 @@ services:
     hostname: wp
     ports:
       - ${WP_PORT-3000}:80
-    user: 1000:1000
     volumes:
       - ./wp-app:/var/www/html
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
@@ -20,7 +19,7 @@ services:
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_DB_NAME: ${DB_NAME}
-      WORDPRESS_TABLE_PREFIX: blo_
+      #WORDPRESS_TABLE_PREFIX: blo_
       WORDPRESS_DEBUG: 0
       WORDPRESS_CONFIG_EXTRA: |
         define('WP_MEMORY_LIMIT', '512M');
@@ -51,8 +50,7 @@ services:
   wpcli:
     image: wordpress:cli-php8.3
     container_name: wpcli
-    hostname: wpcli
-    user: 1000:1000                                                                                                                    
+    hostname: wpcli                                                                                                                  
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       - ./wp-app:/var/www/html:rw

@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: confirm .env create-network wordpress backup show-containers
+.PHONY: confirm .env create-network fix-permissions wordpress backup show-containers
 
 confirm:
 	@( read -p "$(RED)Are you sure? [y/N]$(RESET): " sure && case "$$sure" in [yY]) true;; *) false;; esac )
@@ -17,7 +17,10 @@ create-network:
 		echo "$(NETWORK_NAME) network exits"; \
 	fi
 
-wordpress:
+fix-permissions:
+	@sudo chmod 777 -R ./wp-app
+
+wordpress: fix-permissions
 	@echo 'Install wordpress'
 	@$(DOCKER_COMPOSE) run --rm wpcli wp core install --url=$(WP_URL) --title='$(WP_SITE_NAME)' --locale=$(WP_SITE_LANG) --admin_user=$(WP_SITE_USER) --admin_password=$(WP_SITE_PASSWORD) --admin_email=$(WP_SITE_MAIL)
 	@echo 'Init config'
@@ -30,7 +33,7 @@ wordpress:
 		echo 'Init plugin'; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-mail-smtp --activate; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin install sg-security --activate ; \
-		$(DOCKER_COMPOSE) run --rm wpcli plugin activate akismet ; \
+		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall akismet ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
 		touch .installed ; \
 	fi

@@ -1,1 +1,1 @@
-# Dump Wordpress database
+# Dump Wordpress
