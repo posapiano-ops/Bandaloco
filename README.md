@@ -1,5 +1,5 @@
 # BandaLoco
-Bandariello ProLoco website
+Bandaloco ProLoco website
 
 run (fast)
 ```bash
@@ -11,6 +11,11 @@ run Wordpress CLI
 ```bash
 docker-compose run --rm wpcli --info
 docker-compose run --rm wpcli plugin list
+
+# Opzionale: si può definire un alias per ridurre il comando
+alias wp="docker-compose run --rm wpcli"
+wp --info
+wp plugin list
 ```
 ## Dbeaver (GUI MySQL)
 Web Database Admin `http://localhost:3080` per accedere a DBeaver Database Manager dopo aver avviato i containers. 
