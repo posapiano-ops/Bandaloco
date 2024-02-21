@@ -71,7 +71,7 @@ services:
     hostname: db
     #command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - ./wp-data:/docker-entrypoint-initdb.d:rw
+      #- ./wp-data:/docker-entrypoint-initdb.d:rw
       - db_data:/var/lib/mysql
     restart: unless-stopped
     environment:
