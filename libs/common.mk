@@ -29,8 +29,8 @@ wordpress:
 	@echo 'Init plugin'
 	@$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-mail-smtp --activate
 	@$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello
-	@echo 'Init theme'
-	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentyone
+	@echo 'delete theme'
+	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentythree	
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentytwo
 
 backup:

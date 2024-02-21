@@ -1,10 +1,10 @@
 # BandaLoco
-Bandariello ProLoco  Experience
+Bandariello ProLoco website
 
 run (fast)
 ```bash
 make setup
-make up
+make wordpress
 ```
 
 run Wordpress CLI
