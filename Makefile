@@ -21,7 +21,8 @@ variables: ## Print variables
 	$(info wordpress site name = $(WP_SITE_NAME))
 	$(info wordpress admin username = $(WP_SITE_USER))
 	
-setup: .env create-network start ## Create eth network if it does not exits
+setup: .env create-network start ## Setup core WP system
+	@sleep 15
 
 up: $(COMPOSE_YML) ## Start core containers in foreground (or only one c=<container-name>)
 	@$(DOCKER_COMPOSE) -f $(COMPOSE_YML) up $(c)
