@@ -37,7 +37,7 @@ wordpress: fix-permissions ## Install and confing wordpress
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
 	fi
 	@echo 'Avada check'
-	@if [ ! -z $(WP_AVADA) ]; then \
+	@if [ $(WP_AVADA) == 0 ]; then \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install gutenberg --activate ; \
 	fi 
 	@touch .installed 
