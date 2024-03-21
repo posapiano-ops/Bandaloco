@@ -20,7 +20,7 @@ create-network:
 fix-permissions:
 	@sudo chmod 777 -R ./wp-app
 
-wordpress: fix-permissions
+wordpress: fix-permissions ## Install and confing wordpress
 	@echo 'Install wordpress'
 	@$(DOCKER_COMPOSE) run --rm wpcli wp core install --url=$(WP_URL) --title='$(WP_SITE_NAME)' --locale=$(WP_SITE_LANG) --admin_user=$(WP_SITE_USER) --admin_password=$(WP_SITE_PASSWORD) --admin_email=$(WP_SITE_MAIL)
 	@echo 'Init config'
@@ -35,16 +35,22 @@ wordpress: fix-permissions
 		$(DOCKER_COMPOSE) run --rm wpcli plugin install sg-security --activate ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall akismet ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
-		touch .installed ; \
+		echo 'Avada check'; \
+		if [ $(WP_AVADA) == 0 ]; then \
+			echo 'No Avada... switch on Gutenberg'; \
+			$(DOCKER_COMPOSE) run --rm wpcli plugin install gutenberg --activate ; \
+		fi; \
 	fi
+	
+	@touch .installed 
 	@echo 'delete theme inactive'
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentythree	
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentytwo
 
-backup:
+backup: ## Backup Database wordpress
 	@echo 'Backup Database'
 	@$(DOCKER_COMPOSE) run --rm wpcli db export
-	@mv ./wp-app/*.sql ./wp-data/db/
+	@mv ./wp-app/*.sql ./wp-data/
 
 show-containers:
 	@echo 'Those are the available containers in this project:'
