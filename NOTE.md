@@ -29,3 +29,5 @@ unzip FILENAME/theme/Avada.zip -d ./theme/
 unzip FILENAME/plugins/fusion-core.zip -d ./plugins/
 unzip FILENAME/plugins/fusion-builder.zip -d ./plugins/
 ```
+# Plugin
+* https://listmonk.app/
