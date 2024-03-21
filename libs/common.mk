@@ -35,11 +35,13 @@ wordpress: fix-permissions ## Install and confing wordpress
 		$(DOCKER_COMPOSE) run --rm wpcli plugin install sg-security --activate ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall akismet ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
-	fi
-	@echo 'Avada check'
-	@if [ $(WP_AVADA) == 0 ]; then \
+		echo 'Avada check'; \
+		if [ $(WP_AVADA) == 0 ]; then \
+			echo 'No Avada... switch on Gutenberg'; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install gutenberg --activate ; \
-	fi 
+		fi; \
+	fi
+	
 	@touch .installed 
 	@echo 'delete theme inactive'
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentythree	
