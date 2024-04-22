@@ -62,8 +62,10 @@ services:
     networks:
       bl-eth: null
     depends_on:
-      - db
-      - wp
+      db:
+        condition: service_healthy
+      wp:
+        condition: service_started
 
   db:
     image: mariadb:11.2
@@ -79,6 +81,13 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      start_period: 1m
+      start_interval: 10s
+      interval: 1m
+      timeout: 5s
+      retries: 3
     networks:
       bl-eth: null
 

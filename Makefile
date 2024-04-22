@@ -22,8 +22,6 @@ variables: ## Print variables
 	$(info wordpress admin username = $(WP_SITE_USER))
 	
 setup: .env create-network start ## Setup core WP system
-	@echo Attendere...
-	@sleep 15
 
 bandaloco: setup wordpress ## Setup Bandaloco
 
@@ -45,7 +43,7 @@ ps: ## Like list but for container in the docker-compose file
 	@$(DOCKER_COMPOSE) -f $(COMPOSE_YML) ps
 
 clean: confirm ## Stop and remove all containers, networks..
-	$(DOCKER_COMPOSE) -f $(COMPOSE_YML) down
+	@$(DOCKER_COMPOSE) -f $(COMPOSE_YML) down
 
 destroy: confirm ## Remove all containers and their volumes (or only one c=<container-name>)
 	@${DOCKER_COMPOSE} down -v $(c) ;
