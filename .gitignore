@@ -11,3 +11,4 @@ theme/*
 !plugins/readme.md
 plugins/*
 .installed
+tmp/*
