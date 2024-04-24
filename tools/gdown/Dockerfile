@@ -5,8 +5,19 @@ RUN pip install gdown
 ARG USER
 ARG UID
 ARG GID
+ENV GROUPNAME=$USER
 
-RUN useradd -m ${USER} --uid=${UID}
+RUN addgroup \
+    --gid "$GID" \
+    "$GROUPNAME" \
+&&  adduser \
+    --disabled-password \
+    --gecos "" \
+    --ingroup "$GROUPNAME" \
+    --uid "$UID" \
+    $USER
 
 USER ${UID}:${GID}
 WORKDIR /home/${USER}
+
+CMD ["gdown"]
