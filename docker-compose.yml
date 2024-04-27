@@ -1,5 +1,4 @@
-version: "3.9"
-    
+  
 services:
   wp:
     image: wordpress:6.5.2-php8.3-apache
