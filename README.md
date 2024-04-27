@@ -3,8 +3,7 @@ Bandaloco ProLoco website
 
 run (fast)
 ```bash
-make setup
-make wordpress
+make bandaloco
 ```
 
 run Wordpress CLI

@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: confirm .env create-network fix-permissions wordpress backup show-containers
+.PHONY: confirm .env create-network fix-permissions wordpress backup show-containers avada
 
 confirm:
 	@( read -p "$(RED)Are you sure? [y/N]$(RESET): " sure && case "$$sure" in [yY]) true;; *) false;; esac )
@@ -39,6 +39,8 @@ wordpress: fix-permissions ## Install and confing wordpress
 		if [ $(WP_AVADA) == 0 ]; then \
 			echo 'No Avada... switch on Gutenberg'; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install gutenberg --activate ; \
+		else \
+			echo 'YES Avada'; \
 		fi; \
 	fi
 	
@@ -59,3 +61,11 @@ show-containers:
 	@echo '--> db (DataBase Server MariaDB 11.x)'
 	@echo '--> dbeaver (Cloud Database Manager)'
 	@echo '--> maildev (MAILdev fake SMTP)'
+
+avada: 
+	@mkdir -p tmp
+	@docker run --rm -v ${PWD}/tmp:/home/gdown posapiano/gdown sh -c "gdown https://drive.google.com/uc?id=114Iq6TLocg7c8EKvwDL7Jj9EIAT8miG5"
+	@unzip ./tmp/avada_v$(AVADA_VERSIN).zip -d ./tmp/
+	@unzip ./tmp/Avada\ Theme/Avada.zip -d ./theme/
+	@unzip ./tmp/Avada\ Theme/fusion-core.zip -d ./plugins/
+	@unzip ./tmp/Avada\ Theme/fusion-builder.zip -d ./plugins/
