@@ -24,7 +24,7 @@ download:
 		posapiano/gdown \
     	bash -c "cd /home/${USER}/data && gdown $(URL)
 
-docker run --rm -v ${PWD}/tmp:/home/gdown posapiano/gdown sh -c "gdown https://drive.google.com/uc?id=114Iq6TLocg7c8EKvwDL7Jj9EIAT8miG5""
+docker run --rm -v ${PWD}/tmp:/home/gdown posapiano/gdown sh -c "gdown https://drive.google.com/uc?id=114Iq6TLocg7c8EKvwDL7Jj9EIAT8miG5"
 ```
 ```
 version: "3.9"
