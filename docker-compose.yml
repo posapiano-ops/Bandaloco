@@ -1,4 +1,4 @@
-  
+   
 services:
   wp:
     image: wordpress:6.5.2-php8.3-apache
@@ -92,7 +92,7 @@ services:
 
   # Gui Mysql
   dbeaver:
-    image: dbeaver/cloudbeaver
+    image: dbeaver/cloudbeaver:23
     hostname: dbeaver
     container_name: dbeaver
     restart: unless-stopped
