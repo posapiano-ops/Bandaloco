@@ -2,8 +2,8 @@ DOCKER_COMPOSE=docker-compose
 COMPOSE_YML=docker-compose.yml
 NETWORK_NAME=bl-eth
 
-WP_URL=http://localhost:3000
-WP_SITE_NAME=BandaLoco.dev
+WP_SITE_URL=${WP_URL}
+WP_SITE_NAME=${WP_NAME}
 WP_SITE_USER = ${WP_ADMIN}
 WP_SITE_PASSWORD = ${WP_PASSWORD}
 WP_SITE_MAIL = ${WP_MAIL}
