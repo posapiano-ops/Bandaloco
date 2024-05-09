@@ -5,8 +5,8 @@
 confirm:
 	@( read -p "$(RED)Are you sure? [y/N]$(RESET): " sure && case "$$sure" in [yY]) true;; *) false;; esac )
 
-.env: sample.env
-	@cp --update sample.env .env
+#.env: sample.env
+#	@cp --update sample.env .env
 
 create-network:
 	@$(eval NETWORK=$(shell docker network ls | grep -o '$(NETWORK_NAME)' | awk '{print $$1}')) \
