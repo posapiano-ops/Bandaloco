@@ -3,6 +3,7 @@ Bandaloco ProLoco website
 
 run (fast)
 ```bash
+cp sample.env .env
 make bandaloco
 ```
 
