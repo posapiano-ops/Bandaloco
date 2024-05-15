@@ -18,7 +18,7 @@ wp --info
 wp plugin list
 ```
 ## Dbeaver (GUI MySQL)
-Web Database Admin `http://localhost:3080` per accedere a DBeaver Database Manager dopo aver avviato i containers. 
+Web Database Admin `http://localhost:3080/dbeaver` per accedere a DBeaver Database Manager dopo aver avviato i containers. 
 
 Il nome utente predefinito è `admin@dbeaver` e la password è la stessa fornita nel file `.env`
 ## MailDev
