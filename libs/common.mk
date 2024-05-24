@@ -29,10 +29,14 @@ wordpress: fix-permissions ## Install and confing wordpress
 	@$(DOCKER_COMPOSE) run --rm wpcli option update timezone_string $(WP_SITE_TIMEZONE)
 	@$(DOCKER_COMPOSE) run --rm wpcli option update date_format $(WP_SITE_DATE_FORMAT)
 	@$(DOCKER_COMPOSE) run --rm wpcli option update time_format $(WP_SITE_TIME_FORMAT)
+	@$(DOCKER_COMPOSE) run --rm wpcli wp rewrite structure '/%postname%/'
 	@if [ ! -f .installed ]; then \
 		echo 'Init plugin'; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-mail-smtp --activate; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin install sg-security --activate ; \
+		$(DOCKER_COMPOSE) run --rm wpcli wp sg secure rss-atom-feed enable ; \
+		$(DOCKER_COMPOSE) run --rm wpcli wp db query 'INSERT INTO wp_options (option_name,option_value, autoload) VALUES("sg_security_login_url","bandaloco","yes")' ; \
+		$(DOCKER_COMPOSE) run --rm wpcli wp db query 'UPDATE wp_options SET option_value="custom" where option_name="sg_security_login_type"' ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall akismet ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
 		echo 'Avada check'; \
