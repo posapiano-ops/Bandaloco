@@ -41,8 +41,10 @@ wordpress: fix-permissions ## Install and confing wordpress
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
 		echo 'Avada check'; \
 		if [ $(WP_AVADA) == 0 ]; then \
-			echo 'No Avada... switch on Gutenberg'; \
+			echo 'No Avada... switch on Gutenberg and Other'; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install gutenberg --activate ; \
+			$(DOCKER_COMPOSE) run --rm wpcli plugin install redirection --activate ; \
+			$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-total-branding --activate ; \
 		else \
 			echo 'YES Avada'; \
 		fi; \
