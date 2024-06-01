@@ -29,7 +29,10 @@ wordpress: fix-permissions ## Install and confing wordpress
 	@$(DOCKER_COMPOSE) run --rm wpcli option update timezone_string $(WP_SITE_TIMEZONE)
 	@$(DOCKER_COMPOSE) run --rm wpcli option update date_format $(WP_SITE_DATE_FORMAT)
 	@$(DOCKER_COMPOSE) run --rm wpcli option update time_format $(WP_SITE_TIME_FORMAT)
+	@$(DOCKER_COMPOSE) run --rm wpcli option update blogdescription $(WP_SITE_DESCRIPTION)
 	@$(DOCKER_COMPOSE) run --rm wpcli wp rewrite structure '/%postname%/'
+	@$(eval ATTACHMENT_ID=$(shell $(DOCKER_COMPOSE) run --rm -v $(ROOT_DIR)/images:/tmp/images wpcli media import /tmp/images/favicon_bandaloco/android-chrome-512x512.png --porcelain))
+	@$(DOCKER_COMPOSE) run --rm wpcli option update site_icon ${ATTACHMENT_ID} 
 	@if [ ! -f .installed ]; then \
 		echo 'Init plugin'; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-mail-smtp --activate; \
@@ -44,7 +47,7 @@ wordpress: fix-permissions ## Install and confing wordpress
 			echo 'No Avada... switch on Gutenberg and Other'; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install gutenberg --activate ; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install redirection --activate ; \
-			$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-total-branding --activate ; \
+			$(DOCKER_COMPOSE) run --rm wpcli plugin install white-label-cms --activate ; \
 		else \
 			echo 'YES Avada'; \
 		fi; \
