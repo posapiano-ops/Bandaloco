@@ -48,6 +48,7 @@ wordpress: fix-permissions ## Install and confing wordpress
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install gutenberg --activate ; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install redirection --activate ; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install white-label-cms --activate ; \
+			$(DOCKER_COMPOSE) run --rm wpcli plugin install disable-login-language-switcher --activate ; \
 		else \
 			echo 'YES Avada'; \
 		fi; \
