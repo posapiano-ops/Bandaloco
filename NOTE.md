@@ -44,4 +44,8 @@ unzip ./tmp/Avada\ Theme/fusion-builder.zip -d ./plugins/
 	@$(eval ATTACHMENT_ID=$(shell $(DOCKER_COMPOSE) run --rm -v $(ROOT_DIR)/images:/tmp/images wpcli media import /tmp/images/favicon_bandaloco/android-chrome-512x512.png --porcelain))
 	@echo $(ATTACHMENT_ID)
 	@$(DOCKER_COMPOSE) run --rm wpcli option update site_icon $(ATTACHMENT_ID) 
+
+
+	docker-compose run --rm -v ${PWD}/images:/tmp/images wpcli media import /tmp/images/favicon_bandaloco/android-chrome-512x512.png --porcelain
+	docker-compose run --rm wpcli option update site_icon 13
 ```

@@ -42,6 +42,8 @@ wordpress: fix-permissions ## Install and confing wordpress
 	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_status=publish --post_author=$(WP_SITE_USER)	--post_title=$(WP_PAGE_10) --menu_order=4
 	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_status=publish --post_author=$(WP_SITE_USER)	--post_title=$(WP_PAGE_11) --menu_order=5
 	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_status=publish --post_author=$(WP_SITE_USER)	--post_title=$(WP_PAGE_12) --menu_order=6
+	@$(DOCKER_COMPOSE) run --rm -v ${PWD}/images:/tmp/images wpcli media import /tmp/images/favicon_bandaloco/android-chrome-512x512.png --porcelain
+	@$(DOCKER_COMPOSE) run --rm wpcli option update site_icon 13
 	@$(DOCKER_COMPOSE) run --rm wpcli wp rewrite structure '/%postname%/'
 
 	@if [ ! -f .installed ]; then \
