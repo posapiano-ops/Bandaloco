@@ -56,7 +56,7 @@ wordpress: fix-permissions ## Install and confing wordpress
 	@touch .installed 
 	@echo 'delete theme inactive'
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentythree	
-	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentytwo
+	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentyfour
 
 backup: ## Backup Database wordpress
 	@echo 'Backup Database'
