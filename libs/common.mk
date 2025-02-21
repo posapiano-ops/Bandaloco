@@ -30,6 +30,18 @@ wordpress: fix-permissions ## Install and confing wordpress
 	@$(DOCKER_COMPOSE) run --rm wpcli option update date_format $(WP_SITE_DATE_FORMAT)
 	@$(DOCKER_COMPOSE) run --rm wpcli option update time_format $(WP_SITE_TIME_FORMAT)
 	@$(DOCKER_COMPOSE) run --rm wpcli option update blogdescription $(WP_SITE_DESCRIPTION)
+	@$(DOCKER_COMPOSE) run --rm wpcli option update blog_public 0 
+	@$(DOCKER_COMPOSE) run --rm wpcli post delete 1
+	@$(DOCKER_COMPOSE) run --rm wpcli post delete 2
+	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_title=Home --post_status=publish --post_author=$(WP_SITE_USER)
+	@$(DOCKER_COMPOSE) run --rm wpcli option update show_on_front 'page'
+	@$(DOCKER_COMPOSE) run --rm wpcli option update page_on_front 6
+	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_status=publish --post_author=$(WP_SITE_USER)	--post_title=$(WP_PAGE_7) --menu_order=1
+	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_status=publish --post_author=$(WP_SITE_USER)	--post_title=$(WP_PAGE_8) --menu_order=2
+	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_status=publish --post_author=$(WP_SITE_USER)	--post_title=$(WP_PAGE_9) --menu_order=3
+	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_status=publish --post_author=$(WP_SITE_USER)	--post_title=$(WP_PAGE_10) --menu_order=4
+	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_status=publish --post_author=$(WP_SITE_USER)	--post_title=$(WP_PAGE_11) --menu_order=5
+	@$(DOCKER_COMPOSE) run --rm wpcli post create --post_type=page --post_status=publish --post_author=$(WP_SITE_USER)	--post_title=$(WP_PAGE_12) --menu_order=6
 	@$(DOCKER_COMPOSE) run --rm wpcli wp rewrite structure '/%postname%/'
 
 	@if [ ! -f .installed ]; then \
@@ -39,6 +51,7 @@ wordpress: fix-permissions ## Install and confing wordpress
 		$(DOCKER_COMPOSE) run --rm wpcli wp sg secure rss-atom-feed enable ; \
 		$(DOCKER_COMPOSE) run --rm wpcli wp db query 'INSERT INTO wp_options (option_name,option_value, autoload) VALUES("sg_security_login_url","bandaloco","yes")' ; \
 		$(DOCKER_COMPOSE) run --rm wpcli wp db query 'UPDATE wp_options SET option_value="custom" where option_name="sg_security_login_type"' ; \
+		$(DOCKER_COMPOSE) run --rm wpcli plugin install updraftplus --activate ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall akismet ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
 		echo 'Avada check'; \
@@ -52,12 +65,11 @@ wordpress: fix-permissions ## Install and confing wordpress
 			echo 'YES Avada'; \
 		fi; \
 	fi
-	
-	@touch .installed 
 	@echo 'delete theme inactive'
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentythree	
 	@$(DOCKER_COMPOSE) run --rm wpcli theme uninstall twentytwentyfour
-
+	@touch .installed 
+	
 backup: ## Backup Database wordpress
 	@echo 'Backup Database'
 	@$(DOCKER_COMPOSE) run --rm wpcli db export
@@ -78,3 +90,4 @@ avada:
 	@unzip ./tmp/Avada\ Theme/Avada.zip -d ./theme/
 	@unzip ./tmp/Avada\ Theme/fusion-core.zip -d ./plugins/
 	@unzip ./tmp/Avada\ Theme/fusion-builder.zip -d ./plugins/
+

@@ -13,3 +13,10 @@ WP_SITE_LANG=it_IT
 WP_SITE_TIMEZONE="Europe/Rome"
 WP_SITE_DATE_FORMAT="j F Y"
 WP_SITE_TIME_FORMAT="G:i"
+
+WP_PAGE_7="Chi Siamo"
+WP_PAGE_8="Il Territorio"
+WP_PAGE_9="Eventi"
+WP_PAGE_10="Tesseramento"
+WP_PAGE_11="Documenti"
+WP_PAGE_12="Contatti"
