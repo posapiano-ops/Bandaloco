@@ -64,6 +64,7 @@ wordpress: fix-permissions ## Install and confing wordpress
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install white-label-cms --activate ; \
 			$(DOCKER_COMPOSE) run --rm -T wpcli wp db query < ${PWD}/tools/branding/branding.sql ; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install disable-login-language-switcher --activate ; \
+			$(DOCKER_COMPOSE) run --rm wpcli plugin install contact-form-7 --activate ; \
 		else \
 			echo 'YES Avada'; \
 		fi; \
