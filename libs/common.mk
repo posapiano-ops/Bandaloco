@@ -89,9 +89,8 @@ show-containers:
 
 avada: 
 	@mkdir -p tmp
-	@docker run --rm -v ${PWD}/tmp:/home/gdown posapiano/gdown sh -c "gdown https://drive.google.com/uc?id=114Iq6TLocg7c8EKvwDL7Jj9EIAT8miG5"
+	@docker run --rm -v ${PWD}/tmp:/home/gdown posapiano/gdown sh -c "gdown https://drive.google.com/uc?id=1HCF8DibxQaCC-CUXXS1dXaZqKOW4gnOU"
 	@unzip ./tmp/avada_v$(AVADA_VERSIN).zip -d ./tmp/
-	@unzip ./tmp/Avada\ Theme/Avada.zip -d ./theme/
-	@unzip ./tmp/Avada\ Theme/fusion-core.zip -d ./plugins/
-	@unzip ./tmp/Avada\ Theme/fusion-builder.zip -d ./plugins/
-
+	@unzip ./tmp/avada_v$(AVADA_VERSIN)/Avada\ Theme/Avada.zip -d ./theme/
+	@unzip ./tmp/avada_v$(AVADA_VERSIN)/Avada\ Theme/fusion-core.zip -d ./plugins/
+	@unzip ./tmp/avada_v$(AVADA_VERSIN)/Avada\ Theme/fusion-builder.zip -d ./plugins/
