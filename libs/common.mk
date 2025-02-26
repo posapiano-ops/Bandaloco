@@ -19,6 +19,7 @@ create-network:
 
 fix-permissions:
 	@sudo chmod 777 -R ./wp-app
+	@sudo chmod 777 -R ./wp-data
 
 wordpress: fix-permissions ## Install and confing wordpress
 	@echo 'Install wordpress'
