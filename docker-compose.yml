@@ -68,10 +68,10 @@ services:
         condition: service_started
 
   db:
-    image: mariadb:11.2
+    image: mariadb:11
     container_name: db
     hostname: db
-    #command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=mysql_native_password # MariaDB and MySQL
     volumes:
       #- ./wp-data:/docker-entrypoint-initdb.d:rw
       - db_data:/var/lib/mysql
@@ -82,10 +82,10 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     healthcheck:
-      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
-      start_period: 1m
-      start_interval: 10s
-      interval: 1m
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ] #MariaDB
+      #test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "--silent" ] #MySQL
+      start_period: 10s
+      interval: 10s
       timeout: 5s
       retries: 3
     networks:
