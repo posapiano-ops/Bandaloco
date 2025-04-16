@@ -54,7 +54,7 @@ wordpress: fix-permissions ## Install and confing wordpress
 		$(DOCKER_COMPOSE) run --rm wpcli wp sg secure rss-atom-feed enable ; \
 		$(DOCKER_COMPOSE) run --rm wpcli wp db query 'INSERT INTO wp_options (option_name,option_value, autoload) VALUES("sg_security_login_url","bandaloco","yes")' ; \
 		$(DOCKER_COMPOSE) run --rm wpcli wp db query 'UPDATE wp_options SET option_value="custom" where option_name="sg_security_login_type"' ; \
-		$(DOCKER_COMPOSE) run --rm wpcli plugin install updraftplus --activate ; \
+		$(DOCKER_COMPOSE) run --rm wpcli plugin install wp-database-backup --activate ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall akismet ; \
 		$(DOCKER_COMPOSE) run --rm wpcli plugin uninstall hello ; \
 		echo 'Avada check'; \
