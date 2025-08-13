@@ -7,7 +7,7 @@ cp sample.env .env
 make bandaloco
 ```
 
-run Wordpress CLI
+## Wordpress CLI usage
 ```bash
 docker-compose run --rm wpcli --info
 docker-compose run --rm wpcli plugin list
@@ -22,4 +22,6 @@ Web Database Admin `http://localhost:3080/dbeaver` per accedere a DBeaver Databa
 
 Il nome utente predefinito è `admin@dbeaver` e la password è la stessa fornita nel file `.env`
 ## MailDev
-Modulo per testare l'e-mail generata dal progetto durante lo sviluppo. Gui Web `http://localhost:3081` dopo aver avviato i containers. 
+Modulo per testare e-mail generata dal progetto durante lo sviluppo. 
+
+Gui Web `http://localhost:3081` 
