@@ -49,3 +49,7 @@ unzip ./tmp/Avada\ Theme/fusion-builder.zip -d ./plugins/
 	docker-compose run --rm -v ${PWD}/images:/tmp/images wpcli media import /tmp/images/favicon_bandaloco/android-chrome-512x512.png --porcelain
 	docker-compose run --rm wpcli option update site_icon 13
 ```
+### Remove redirection Plugin
+```bash
+$(DOCKER_COMPOSE) run --rm wpcli plugin install redirection --activate ; \
+```
