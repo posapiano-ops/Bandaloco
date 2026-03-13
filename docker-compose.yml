@@ -1,7 +1,7 @@
    
 services:
   wp:
-    image: wordpress:6.8.0-php8.3-apache
+    image: wordpress:6.9.4-php8.3-apache
     container_name: wp
     hostname: wp
     ports:
