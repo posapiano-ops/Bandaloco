@@ -61,7 +61,7 @@ wordpress: fix-permissions ## Install and confing wordpress
 		if [ $(WP_AVADA) == 0 ]; then \
 			echo 'No Avada... switch on Gutenberg and Other'; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install gutenberg --activate ; \
-			$(DOCKER_COMPOSE) run --rm wpcli plugin install redirection --activate ; \
+			$(DOCKER_COMPOSE) run --rm wpcli plugin install redirection ; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install white-label-cms --activate ; \
 			$(DOCKER_COMPOSE) run --rm -T wpcli wp db query < ${PWD}/tools/branding/branding.sql ; \
 			$(DOCKER_COMPOSE) run --rm wpcli plugin install disable-login-language-switcher --activate ; \
