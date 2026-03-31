@@ -10,5 +10,6 @@ theme/*
 !theme/readme.md
 !plugins/readme.md
 plugins/*
+!plugins/bandaloco
 .installed
 tmp/*
