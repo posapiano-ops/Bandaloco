@@ -112,5 +112,9 @@
             <code>[proloco_iscrizione]</code>
             <span>Modulo di iscrizione online per nuovi tesserati</span>
         </div>
+         <div class="blt-shortcode-item">
+            <code>[proloco_direttivo]</code>
+            <span>Pagina Pubblica Direttivo</span>
+        </div>
     </div>
 </div>
