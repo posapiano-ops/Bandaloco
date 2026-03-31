@@ -1,4 +1,4 @@
-/* ProLoco Tessere – Public JS (v1.2.0) */
+/*Bandaloco Tessere – Public JS (v1.2.0) */
 jQuery(function ($) {
 
     // Auto-uppercase CF

@@ -2,7 +2,7 @@
 <div class="wrap blt-wrap">
     <h1 class="blt-page-title">
         <span class="dashicons dashicons-id-alt"></span>
-        ProLoco Tessere &mdash; Dashboard
+       Bandaloco Tessere &mdash; Dashboard
     </h1>
 
     <?php if ( isset($_GET['saved']) ) : ?>

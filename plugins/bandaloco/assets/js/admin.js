@@ -1,4 +1,4 @@
-/* ProLoco Tessere – Admin JS */
+/*Bandaloco Tessere – Admin JS */
 jQuery(function($){
     // Auto-uppercase CF e provincia
     $('input[name="codice_fiscale"], input[name="provincia"]').on('input', function(){

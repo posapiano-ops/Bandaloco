@@ -118,7 +118,7 @@ class BLT_Activator {
             'quota_familiare'        => '30.00',
             'quota_junior'           => '10.00',
             'giorni_avviso'          => '30',
-            'prefisso_tessera'       => 'PL',
+            'prefisso_tessera'       => 'BL',
             'anno_corrente'          => date('Y'),
             'email_notifiche'        => get_option('admin_email'),
             'testo_tessera'          => 'Bandaloco',

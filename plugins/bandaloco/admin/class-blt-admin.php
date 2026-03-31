@@ -17,7 +17,7 @@ class BLT_Admin {
 
     public function register_menu() {
         $badge      = BLT_Email::conta_notifiche_non_lette();
-        $menu_label = 'Tessere Bandaloco';
+        $menu_label = 'Bandaloco';
         if ( $badge > 0 ) {
             $menu_label .= ' <span class="update-plugins count-' . $badge . '"><span class="plugin-count">' . $badge . '</span></span>';
         }

@@ -248,7 +248,7 @@ class BLT_OAuth {
             $admin_email,
             'Nuovo accesso social – ' . ucfirst($provider),
             sprintf(
-                "Un nuovo utente ha effettuato l'accesso tramite %s:\n\nNome: %s\nEmail: %s\n\nVerifica in WP Admin > Tessere Bandaloco se associare manualmente la tessera.",
+                "Un nuovo utente ha effettuato l'accesso tramite %s:\n\nNome: %s\nEmail: %s\n\nVerifica in WP Admin > Bandaloco se associare manualmente la tessera.",
                 ucfirst($provider), $profile['display'], $email
             )
         );

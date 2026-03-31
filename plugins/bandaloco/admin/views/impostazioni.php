@@ -2,7 +2,7 @@
 <div class="wrap blt-wrap">
     <h1 class="blt-page-title">
         <span class="dashicons dashicons-admin-settings"></span>
-        Impostazioni ProLoco Tessere
+        ImpostazioniBandaloco Tessere
     </h1>
 
     <?php if(isset($_GET['saved'])): ?>

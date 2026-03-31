@@ -194,7 +194,7 @@ class BLT_Database {
 
         public static function genera_numero_tessera() {
         global $wpdb;
-        $prefisso = BLT_Database::get_setting( 'prefisso_tessera', 'PL' );
+        $prefisso = BLT_Database::get_setting( 'prefisso_tessera', 'BL' );
         $anno     = date( 'Y' );
         $last     = $wpdb->get_var( $wpdb->prepare(
             "SELECT numero_tessera FROM {$wpdb->prefix}blt_tesserati
