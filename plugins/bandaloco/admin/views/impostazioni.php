@@ -2,7 +2,7 @@
 <div class="wrap blt-wrap">
     <h1 class="blt-page-title">
         <span class="dashicons dashicons-admin-settings"></span>
-        ImpostazioniBandaloco Tessere
+        Impostazioni Bandaloco
     </h1>
 
     <?php if(isset($_GET['saved'])): ?>
@@ -11,7 +11,7 @@
 
     <form method="post" action="<?= admin_url('admin-post.php') ?>">
         <?php wp_nonce_field('blt_save_settings'); ?>
-        <input type="hidden" name="action" value="BLT_save_settings">
+        <input type="hidden" name="action" value="blt_save_settings">
 
         <div class="blt-settings-grid">
 
