@@ -2,7 +2,7 @@
 <div class="wrap blt-wrap">
     <h1 class="blt-page-title">
         <span class="dashicons dashicons-money-alt"></span>
-        Quote Associative
+        Bandaloco &mdash; Quote Associative
     </h1>
 
     <?php if ( isset($_GET['bonifico_confermato']) ) : ?>

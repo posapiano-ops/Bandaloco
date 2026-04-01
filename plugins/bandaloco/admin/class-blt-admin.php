@@ -79,8 +79,8 @@ class BLT_Admin {
         $like      = '%' . $wpdb->esc_like( $search ) . '%';
         $quote     = $wpdb->get_results( $wpdb->prepare(
             "SELECT q.*, t.nome, t.cognome, t.numero_tessera
-             FROM {$wpdb->prefix}BLT_quote q
-             JOIN {$wpdb->prefix}BLT_tesserati t ON t.id = q.tesserato_id
+             FROM {$wpdb->prefix}blt_quote q
+             JOIN {$wpdb->prefix}blt_tesserati t ON t.id = q.tesserato_id
              WHERE q.anno = %d AND (t.cognome LIKE %s OR t.nome LIKE %s OR t.numero_tessera LIKE %s)
              ORDER BY t.cognome ASC LIMIT 20 OFFSET %d",
             $anno, $like, $like, $like, ($paged-1)*20
@@ -114,7 +114,7 @@ class BLT_Admin {
         if ( ! $id ) {
             global $wpdb;
             $msg = urlencode( 'Errore nel salvataggio: ' . $wpdb->last_error );
-            wp_redirect( admin_url( 'admin.php?page=blt-tesserati&action=' . ( $nuovo ? 'new' : 'edit&id=' . $id_originale ) . '&BLT_error=' . $msg ) );
+            wp_redirect( admin_url( 'admin.php?page=blt-tesserati&action=' . ( $nuovo ? 'new' : 'edit&id=' . $id_originale ) . '&blt_error=' . $msg ) );
             exit;
         }
 
@@ -179,7 +179,7 @@ class BLT_Admin {
 
                 // Avvisa l'admin se importo insufficiente
                 if ( ! $attivato ) {
-                    $back = admin_url( 'admin.php?page=blt-tesserati&action=view&id=' . $tesserato_id . '&quota_saved=1&BLT_warn=importo_basso' );
+                    $back = admin_url( 'admin.php?page=blt-tesserati&action=view&id=' . $tesserato_id . '&quota_saved=1&blt_warn=importo_basso' );
                     wp_redirect( $back );
                     exit;
                 }
@@ -232,7 +232,7 @@ class BLT_Admin {
             BLT_Email::invia_conferma_pagamento( $tesserato, $quota_aggiornata );
         }
 
-        $warn = $attivato ? '' : '&BLT_warn=importo_basso';
+        $warn = $attivato ? '' : '&blt_warn=importo_basso';
         wp_redirect( admin_url( 'admin.php?page=blt-quote&bonifico_confermato=1' . $warn ) );
         exit;
     }
@@ -244,7 +244,7 @@ class BLT_Admin {
     }
 
     public function handle_export_pdf() {
-        check_admin_referer( 'BLT_export' );
+        check_admin_referer( 'blt_export' );
         if ( ! current_user_can( 'manage_options' ) ) wp_die();
         BLT_Export::export_pdf( array( 'stato' => sanitize_text_field($_GET['stato'] ?? '') ) );
     }

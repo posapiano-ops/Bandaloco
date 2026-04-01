@@ -110,7 +110,7 @@ class BLT_Public {
         if ( is_page() ) {
             wp_enqueue_style(  'blt-public', BLT_PLUGIN_URL . 'assets/css/public.css', array(), BLT_VERSION );
             wp_enqueue_script( 'blt-public', BLT_PLUGIN_URL . 'assets/js/public.js',  array('jquery'), BLT_VERSION, true );
-            wp_localize_script( 'blt-public', 'pltAjax', array(
+            wp_localize_script( 'blt-public', 'bltAjax', array(
                 'url'   => admin_url('admin-ajax.php'),
                 'nonce' => wp_create_nonce('blt_payment_nonce'),
             ) );
@@ -126,9 +126,9 @@ class BLT_Public {
     }
 
     public function handle_public_forms() {
-        if ( ! isset( $_POST['plt_action'] ) ) return;
+        if ( ! isset( $_POST['blt_action'] ) ) return;
 
-        switch ( $_POST['plt_action'] ) {
+        switch ( $_POST['blt_action'] ) {
             case 'login':
                 $this->process_login();
                 break;
@@ -148,11 +148,11 @@ class BLT_Public {
      * Recupero password frontend — invia email reset senza passare per /wp-login.php
      */
     private function process_login() {
-        if ( ! wp_verify_nonce( $_POST['plt_nonce'] ?? '', 'blt_login' ) ) {
+        if ( ! wp_verify_nonce( $_POST['blt_nonce'] ?? '', 'blt_login' ) ) {
             wp_die('Sessione scaduta. Ricaricare la pagina.');
         }
 
-        $redirect = sanitize_url( $_POST['plt_redirect'] ?? '' );
+        $redirect = sanitize_url( $_POST['blt_redirect'] ?? '' );
         if ( ! $redirect || ! wp_validate_redirect($redirect) ) {
             $redirect = home_url('/');
         }

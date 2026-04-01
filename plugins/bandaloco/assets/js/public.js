@@ -1,4 +1,4 @@
-/*Bandaloco Tessere – Public JS (v1.2.0) */
+/*Bandaloco – Public JS (v1.2.0) */
 jQuery(function ($) {
 
     // Auto-uppercase CF
@@ -32,10 +32,10 @@ jQuery(function ($) {
         $spinner.show();
 
         $.ajax({
-            url:    pltAjax.url,
+            url:    bltAjax.url,
             method: 'POST',
             data: {
-                action:       'BLT_create_payment',
+                action:       'blts_create_payment',
                 nonce:        nonce,
                 gateway:      gateway,
                 tipo_tessera: tipo,

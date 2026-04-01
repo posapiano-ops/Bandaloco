@@ -1,4 +1,4 @@
-/*Bandaloco Tessere – Admin CSS (v1.3.0 – Gutenberg style) */
+/*Bandaloco – Admin CSS (v1.3.0 – Gutenberg style) */
 
 :root {
     --blt-blue:      #0073aa;
@@ -182,7 +182,7 @@
 }
 .blt-form-section input,
 .blt-form-section select,
-.blt-form-section textarea { width: 100%; }
+.blt-form-section textarea { }
 .blt-form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .blt-form-row-3 { display: grid; grid-template-columns: 1fr 2fr 70px; gap: 10px; }
 .blt-form-submit { margin-top: 18px; display: flex; gap: 10px; align-items: center; }

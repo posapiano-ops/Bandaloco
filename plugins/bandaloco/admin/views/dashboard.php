@@ -2,7 +2,7 @@
 <div class="wrap blt-wrap">
     <h1 class="blt-page-title">
         <span class="dashicons dashicons-id-alt"></span>
-       Bandaloco Tessere &mdash; Dashboard
+       Bandaloco &mdash; Dashboard
     </h1>
 
     <?php if ( isset($_GET['saved']) ) : ?>

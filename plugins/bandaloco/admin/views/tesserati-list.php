@@ -2,7 +2,7 @@
 <div class="wrap blt-wrap">
     <h1 class="blt-page-title">
         <span class="dashicons dashicons-groups"></span>
-        Tesserati
+        Bandaloco &mdash; Tesserati
         <a href="<?= admin_url('admin.php?page=blt-tesserati&action=new') ?>" class="page-title-action">＋ Nuovo</a>
     </h1>
 

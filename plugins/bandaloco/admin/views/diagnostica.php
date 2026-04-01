@@ -5,7 +5,7 @@ global $wpdb;
 $log = array();
 
 // Forza installazione se richiesto
-if ( isset($_POST['plt_force_install']) && check_admin_referer('blt_force_install') ) {
+if ( isset($_POST['blt_force_install']) && check_admin_referer('blt_force_install') ) {
 
     $charset = $wpdb->get_charset_collate();
     $t       = $wpdb->prefix . 'blt_tesserati';
@@ -100,11 +100,11 @@ $esiste_info = (int) $wpdb->get_var( $wpdb->prepare(
     DB_NAME, $tabella
 ) );
 $esiste_show = $wpdb->get_var( "SHOW TABLES LIKE '{$tabella}'" );
-$tutte_plt   = $wpdb->get_col( "SHOW TABLES LIKE '{$wpdb->prefix}blt_%'" );
+$tutte_blt   = $wpdb->get_col( "SHOW TABLES LIKE '{$wpdb->prefix}blt_%'" );
 $user_grants = $wpdb->get_results( "SHOW GRANTS FOR CURRENT_USER()" );
 ?>
 <div class="wrap blt-wrap">
-<h1 class="blt-page-title"><span class="dashicons dashicons-admin-tools"></span> Diagnostica Bandaloco Tessere</h1>
+<h1 class="blt-page-title"><span class="dashicons dashicons-admin-tools"></span>Bandaloco &mdash; Diagnostica</h1>
 
 <h2>Stato database</h2>
 <table class="widefat" style="max-width:800px;margin-bottom:20px;">
@@ -115,7 +115,7 @@ $user_grants = $wpdb->get_results( "SHOW GRANTS FOR CURRENT_USER()" );
 <tr><td>Tabella attesa</td><td><code><?= esc_html($tabella) ?></code></td><td>ℹ️</td></tr>
 <tr><td>Esiste (information_schema)</td><td><code><?= $esiste_info ? 'SÌ' : 'NO' ?></code></td><td><?= $esiste_info ? '✅' : '❌' ?></td></tr>
 <tr><td>Esiste (SHOW TABLES)</td><td><code><?= esc_html($esiste_show ?: 'NULL') ?></code></td><td><?= $esiste_show ? '✅' : '❌' ?></td></tr>
-<tr><td>Tabelle blt_* trovate</td><td><code><?= esc_html($tutte_plt ? implode(', ', $tutte_plt) : 'nessuna') ?></code></td><td><?= $tutte_plt ? '✅' : '❌' ?></td></tr>
+<tr><td>Tabelle blt_* trovate</td><td><code><?= esc_html($tutte_blt ? implode(', ', $tutte_blt) : 'nessuna') ?></code></td><td><?= $tutte_blt ? '✅' : '❌' ?></td></tr>
 <tr><td>Ultimo errore $wpdb</td><td><code><?= esc_html($wpdb->last_error ?: '—') ?></code></td><td>ℹ️</td></tr>
 <tr><td>charset_collate</td><td><code><?= esc_html($wpdb->get_charset_collate()) ?></code></td><td>ℹ️</td></tr>
 </tbody>

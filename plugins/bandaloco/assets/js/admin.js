@@ -1,4 +1,4 @@
-/*Bandaloco Tessere – Admin JS */
+/*Bandaloco – Admin JS */
 jQuery(function($){
     // Auto-uppercase CF e provincia
     $('input[name="codice_fiscale"], input[name="provincia"]').on('input', function(){
@@ -11,7 +11,7 @@ jQuery(function($){
     });
 
     // Imposta quota automaticamente dal tipo tessera
-    var quote = pltAjax && pltAjax.quote ? pltAjax.quote : {};
+    var quote = bltAjax && bltAjax.quote ? bltAjax.quote : {};
     $('select[name="tipo_tessera"]').on('change', function(){
         var tipo = $(this).val();
         if (quote[tipo]) $('input[name="importo"]').val(quote[tipo]);
