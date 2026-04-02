@@ -102,7 +102,7 @@ class BLT_Database {
     public static function get_tesserato( $id ) {
         global $wpdb;
         return $wpdb->get_row( $wpdb->prepare(
-            "SELECT * FROM {$wpdb->prefix}BLT_tesserati WHERE id = %d", absint( $id )
+            "SELECT * FROM {$wpdb->prefix}blt_tesserati WHERE id = %d", absint( $id )
         ) );
     }
 

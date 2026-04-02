@@ -74,10 +74,10 @@ class BLT_Email {
 
     /**
      * Crea una notifica admin WordPress (visibile nel menu Tessere Pro Loco).
-     * Usa l'opzione 'BLT_notifiche_admin' come array di messaggi non letti.
+     * Usa l'opzione 'blt_notifiche_admin' come array di messaggi non letti.
      */
     private static function crea_notifica_wp( $tesserato, string $tipo ): void {
-        $notifiche = get_option('BLT_notifiche_admin', array());
+        $notifiche = get_option('blt_notifiche_admin', array());
         $notifiche[] = array(
             'tipo'    => $tipo,
             'id'      => $tesserato->id,
@@ -173,8 +173,8 @@ class BLT_Email {
 }
 
 // Cron job giornaliero per avvisi scadenza
-add_action( 'blt_daily_check_scadenze', 'BLT_check_scadenze_cron' );
-function BLT_check_scadenze_cron() {
+add_action( 'blt_daily_check_scadenze', 'blt_check_scadenze_cron' );
+function blt_check_scadenze_cron() {
     global $wpdb;
     $giorni  = (int) BLT_Database::get_setting( 'giorni_avviso', 30 );
     $results = $wpdb->get_results( $wpdb->prepare(

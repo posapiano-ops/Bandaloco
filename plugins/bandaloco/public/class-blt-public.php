@@ -89,7 +89,7 @@ class BLT_Public {
     /**
      * Intercetta il link di reset password che WP invia via email.
      * WP manda: /wp-login.php?action=rp&key=XXX&login=YYY
-     * Noi lo gestiamo in una pagina frontend con ?BLT_reset_key=XXX&BLT_reset_login=YYY
+     * Noi lo gestiamo in una pagina frontend con ?blt_reset_key=XXX&blt_reset_login=YYY
      */
     public function intercept_password_reset() {
         $area_url = BLT_Database::get_setting('pagina_area');

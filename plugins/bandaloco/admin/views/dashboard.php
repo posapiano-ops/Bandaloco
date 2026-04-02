@@ -93,10 +93,10 @@
         <a href="<?= admin_url('admin.php?page=blt-quote') ?>" class="button button-large">
             💳 Gestione Quote
         </a>
-        <a href="<?= wp_nonce_url(admin_url('admin-post.php?action=BLT_export_csv'), 'blt_export') ?>" class="button button-large">
+        <a href="<?= wp_nonce_url(admin_url('admin-post.php?action=blt_export_csv'), 'blt_export') ?>" class="button button-large">
             📥 Esporta CSV
         </a>
-        <a href="<?= wp_nonce_url(admin_url('admin-post.php?action=BLT_export_pdf'), 'blt_export') ?>" class="button button-large" target="_blank">
+        <a href="<?= wp_nonce_url(admin_url('admin-post.php?action=blt_export_pdf'), 'blt_export') ?>" class="button button-large" target="_blank">
             📄 Esporta PDF
         </a>
     </div>

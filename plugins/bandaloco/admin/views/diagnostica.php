@@ -146,7 +146,7 @@ $user_grants = $wpdb->get_results( "SHOW GRANTS FOR CURRENT_USER()" );
 
 <form method="post" style="margin-top:10px;">
     <?php wp_nonce_field('blt_force_install'); ?>
-    <button type="submit" name="BLT_force_install" value="1" class="button button-primary button-large">
+    <button type="submit" name="blt_force_install" value="1" class="button button-primary button-large">
         🔧 Crea tabelle adesso (con log dettagliato)
     </button>
 </form>

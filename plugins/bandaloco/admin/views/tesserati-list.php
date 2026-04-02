@@ -26,8 +26,8 @@
                 <option value="pub" <?= selected($direttivo??'','pub',false) ?>>🌐 Direttivo pubblicato</option>
             </select>
             <button type="submit" class="button">🔍 Filtra</button>
-            <a href="<?= wp_nonce_url(admin_url('admin-post.php?action=BLT_export_csv&stato='.urlencode($stato)), 'blt_export') ?>" class="button">📥 CSV</a>
-            <a href="<?= wp_nonce_url(admin_url('admin-post.php?action=BLT_export_pdf&stato='.urlencode($stato)), 'blt_export') ?>" class="button" target="_blank">📄 PDF</a>
+            <a href="<?= wp_nonce_url(admin_url('admin-post.php?action=blt_export_csv&stato='.urlencode($stato)), 'blt_export') ?>" class="button">📥 CSV</a>
+            <a href="<?= wp_nonce_url(admin_url('admin-post.php?action=blt_export_pdf&stato='.urlencode($stato)), 'blt_export') ?>" class="button" target="_blank">📄 PDF</a>
         </div>
     </form>
 

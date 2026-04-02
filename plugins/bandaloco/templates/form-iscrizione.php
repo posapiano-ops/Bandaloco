@@ -42,7 +42,7 @@ if ( isset($_POST['blt_registrazione']) && wp_verify_nonce($_POST['blt_nonce'] ?
         $errore = 'Le due password non coincidono.';
     } elseif ( email_exists($email) ) {
         $errore = 'Questa email è già registrata. '
-            . '<a href="' . esc_url( add_query_arg('BLT_forgot','1',$area_url) ) . '">Password dimenticata?</a>';
+            . '<a href="' . esc_url( add_query_arg('blt_forgot','1',$area_url) ) . '">Password dimenticata?</a>';
     } elseif ( empty($_POST['privacy']) ) {
         $errore = 'Devi accettare il trattamento dei dati personali.';
     } else {

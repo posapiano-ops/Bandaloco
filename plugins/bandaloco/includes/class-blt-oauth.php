@@ -42,8 +42,8 @@ class BLT_OAuth {
      */
     public static function get_auth_url( $provider, $redirect_to = '' ) {
         $state = wp_generate_password( 16, false );
-        set_transient( 'BLT_oauth_state_'    . $state, $state,                   600 );
-        set_transient( 'BLT_oauth_redirect_' . $state, $redirect_to ?: home_url('/'), 600 );
+        set_transient( 'blt_oauth_state_'    . $state, $state,                   600 );
+        set_transient( 'blt_oauth_redirect_' . $state, $redirect_to ?: home_url('/'), 600 );
 
         switch ( $provider ) {
             case 'google':
@@ -113,7 +113,7 @@ class BLT_OAuth {
             exit;
 
         } catch ( Exception $e ) {
-            wp_safe_redirect( add_query_arg('BLT_oauth_error', urlencode($e->getMessage()), $redirect_back) );
+            wp_safe_redirect( add_query_arg('blt_oauth_error', urlencode($e->getMessage()), $redirect_back) );
             exit;
         }
     }
@@ -202,7 +202,7 @@ class BLT_OAuth {
 
     private function login_or_register( array $profile, string $provider ): int {
         $email    = sanitize_email( $profile['email'] );
-        $meta_key = 'BLT_' . $provider . '_id';
+        $meta_key = 'blt_' . $provider . '_id';
 
         // 1. Cerca per provider ID (login ripetuto)
         $users = get_users([

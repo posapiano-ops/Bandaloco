@@ -65,8 +65,8 @@
                 <a href="<?= admin_url('admin.php?page=blt-tesserati&action=view&id='.$q->tesserato_id) ?>" class="button button-small">👁 Vedi</a>
                 <?php if ( $q->stato_pagamento === 'in_attesa' ) :
                     $confirm_url = wp_nonce_url(
-                        admin_url('admin-post.php?action=BLT_conferma_bonifico&quota_id='.$q->id.'&tesserato_id='.$q->tesserato_id),
-                        'BLT_conferma_bonifico_'.$q->id
+                        admin_url('admin-post.php?action=blt_conferma_bonifico&quota_id='.$q->id.'&tesserato_id='.$q->tesserato_id),
+                        'blt_conferma_bonifico_'.$q->id
                     ); ?>
                     <a href="<?= esc_url($confirm_url) ?>"
                        class="button button-small button-primary"

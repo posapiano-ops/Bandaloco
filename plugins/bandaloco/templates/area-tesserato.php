@@ -385,7 +385,7 @@ $tab = sanitize_key($_GET['blt_tab'] ?? ( isset($_GET['blt_tessera_creata']) ? '
         <?php else :
             $tipo_tessera = $tesserato->tipo_tessera ?: 'ordinario';
             $tesserato_id = (int)$tesserato->id;
-            $return_url   = add_query_arg('BLT_tab','quota', $current_url);
+            $return_url   = add_query_arg('blt_tab','quota', $current_url);
             include BLT_PLUGIN_DIR . 'templates/payment-block.php';
         endif; ?>
     </div>

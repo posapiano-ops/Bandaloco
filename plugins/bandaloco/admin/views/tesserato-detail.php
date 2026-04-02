@@ -16,7 +16,7 @@ $quota_anno = BLT_Database::get_quota($tesserato->id, date('Y'));
     <?php if(isset($_GET['quota_saved'])) : ?>
         <div class="notice notice-success is-dismissible"><p>💳 Quota aggiornata.</p></div>
     <?php endif; ?>
-    <?php if(isset($_GET['BLT_warn']) && $_GET['BLT_warn']==='importo_basso') : ?>
+    <?php if(isset($_GET['blt_warn']) && $_GET['blt_warn']==='importo_basso') : ?>
         <div class="notice notice-warning is-dismissible">
             <p>⚠️ <strong>Importo insufficiente:</strong> la quota è stata salvata ma la tessera <strong>non è stata attivata</strong> perché l'importo pagato è inferiore alla quota dovuta per questo tipo di tessera. Modifica l'importo o cambia manualmente lo stato della tessera.</p>
         </div>
@@ -59,7 +59,7 @@ $quota_anno = BLT_Database::get_quota($tesserato->id, date('Y'));
             <h2>💳 Quota <?= date('Y') ?></h2>
             <form method="post" action="<?= admin_url('admin-post.php') ?>">
                 <?php wp_nonce_field('blt_save_quota'); ?>
-                <input type="hidden" name="action" value="BLT_save_quota">
+                <input type="hidden" name="action" value="blt_save_quota">
                 <input type="hidden" name="tesserato_id" value="<?= $tesserato->id ?>">
                 <input type="hidden" name="quota_id" value="<?= $quota_anno ? $quota_anno->id : '0' ?>">
                 <input type="hidden" name="anno" value="<?= date('Y') ?>">
@@ -114,7 +114,7 @@ $quota_anno = BLT_Database::get_quota($tesserato->id, date('Y'));
     <div class="blt-danger-zone">
         <form method="post" action="<?= admin_url('admin-post.php') ?>" onsubmit="return confirm('Eliminare definitivamente questo tesserato?')">
             <?php wp_nonce_field('blt_delete_tesserato'); ?>
-            <input type="hidden" name="action" value="BLT_delete_tesserato">
+            <input type="hidden" name="action" value="blt_delete_tesserato">
             <input type="hidden" name="tesserato_id" value="<?= $tesserato->id ?>">
             <button type="submit" class="button" style="color:#c00;border-color:#c00;">🗑️ Elimina Tesserato</button>
         </form>

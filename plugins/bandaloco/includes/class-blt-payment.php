@@ -24,8 +24,8 @@ class BLT_Payment {
     public function __construct() {
         add_action( 'init',                        array( $this, 'handle_return' ) );
         add_action( 'init',                        array( $this, 'handle_webhook' ) );
-        add_action( 'wp_ajax_BLT_create_payment',        array( $this, 'ajax_create_payment' ) );
-        add_action( 'wp_ajax_nopriv_BLT_create_payment', array( $this, 'ajax_create_payment' ) );
+        add_action( 'wp_ajax_blt_create_payment',        array( $this, 'ajax_create_payment' ) );
+        add_action( 'wp_ajax_nopriv_blt_create_payment', array( $this, 'ajax_create_payment' ) );
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -33,7 +33,7 @@ class BLT_Payment {
     // ─────────────────────────────────────────────────────────────────────────
 
     public function ajax_create_payment() {
-        check_ajax_referer( 'BLT_payment_nonce', 'nonce' );
+        check_ajax_referer( 'blt_payment_nonce', 'nonce' );
 
         $gateway      = sanitize_key( $_POST['gateway'] ?? '' );
         $tipo_tessera = sanitize_key( $_POST['tipo_tessera'] ?? 'ordinario' );
@@ -114,7 +114,7 @@ class BLT_Payment {
                 'mode'                                => 'payment',
                 'success_url'                         => $success_url,
                 'cancel_url'                          => $cancel_url,
-                'metadata[BLT_token]'                 => $token,
+                'metadata[blt_token]'                 => $token,
                 'metadata[tipo_tessera]'              => $tipo,
                 'line_items[0][quantity]'             => '1',
                 'line_items[0][price_data][currency]' => 'eur',
@@ -151,7 +151,7 @@ class BLT_Payment {
         if ( $event['type'] === 'checkout.session.completed' ) {
             $session = $event['data']['object'];
             if ( $session['payment_status'] === 'paid' ) {
-                $token = $session['metadata']['BLT_token'] ?? '';
+                $token = $session['metadata']['blt_token'] ?? '';
                 if ( $token ) {
                     $this->on_payment_confirmed( $token, 'stripe', $session['id'] );
                 }

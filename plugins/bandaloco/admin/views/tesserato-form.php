@@ -37,7 +37,7 @@ $ruoli_direttivo = [
 
     <form method="post" action="<?= admin_url('admin-post.php') ?>" class="blt-form">
         <?php wp_nonce_field('blt_save_tesserato'); ?>
-        <input type="hidden" name="action" value="BLT_save_tesserato">
+        <input type="hidden" name="action" value="blt_save_tesserato">
         <input type="hidden" name="tesserato_id" value="<?= $val('id', '0') ?>">
 
         <div class="blt-form-grid">
